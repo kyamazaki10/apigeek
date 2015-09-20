@@ -1,9 +1,12 @@
 extends ../layout
 
 block content
-  header
-    h1= title
+    header
+        h1= title
 
-  .container
-    .content
-      h2 Total Transactions
+    .container
+        .content
+            h2 Total Transactions by Developer
+            p Email:
+                input(type='text' name='email')
+            a(onclick='submit()') Submit
