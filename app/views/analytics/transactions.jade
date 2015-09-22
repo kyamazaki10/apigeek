@@ -9,11 +9,11 @@ block content
         .content
             h2 Total Transactions by Developer
 
-            form(class='form-inline')
+            form(name='Analytics' class='form-inline')
                 .form-group
-                    label Email:
+                    label(for='email') Email:
                     input(type='text' class='form-control')
-                    button(class='btn btn-default submit') Submit
+                button(id='getTransactions' class='btn btn-default submit') Submit
 
             h4(class='results') Result
             .highlight
