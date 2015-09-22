@@ -1,3 +1,15 @@
 body {
     font-family: Helvetica, Arial, sans-serif;
 }
+
+label {
+    margin-right: 10px;
+}
+
+.submit {
+    margin-left: 6px;
+}
+
+.results {
+    margin-top: 50px;
+}
