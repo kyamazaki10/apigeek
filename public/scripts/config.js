@@ -1,0 +1,6 @@
+A.Config = {
+
+    "organization" : "",
+    "environment" : ""
+
+};

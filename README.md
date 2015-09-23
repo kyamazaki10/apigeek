@@ -1,6 +1,6 @@
 # apigeek
 
-This application provides a clean interface for consolidating and customizing all your most popular API calls to Apigee.
+This application provides a clean interface for consolidating and customizing all your favorite API calls to Apigee.
 
 ## Running it Locally
 ```
@@ -10,5 +10,4 @@ nodemon app.js
 ```
 
 ### Configuring the Application
-
-Coming soon.
+Edit `/public/scripts/config.js` with your Apigee organization and environment.
