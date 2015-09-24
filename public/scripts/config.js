@@ -1,6 +1,8 @@
 A.Config = {
 
-    "organization" : "",
-    "environment" : ""
+    "org" : "",
+    "env" : "",
+    "user" : "",
+    "pw" : ""
 
 };
