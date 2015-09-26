@@ -21,7 +21,7 @@ A.Analytics = {
      */
     prettifyTransactions: function(data) {
         var proxies = data.environments[0].dimensions;
-        var thead = '';
+        var thead = '<th></th>';
         var tbody = '';
         var date = [];
         var values;
@@ -47,6 +47,7 @@ A.Analytics = {
         // loop through the each date's array
         for (var k=0; k<date.length; k++) {
             tbody += '<tr>';
+            tbody += '<td class="date">' + A.Analytics.formatDate(values[k].timestamp) + '</td>';
 
             for (var l=0; l<date[k].length; l++) {
                 tbody += '<td>' + date[k][l] + '</td>';
@@ -57,6 +58,17 @@ A.Analytics = {
 
         $('thead').html(thead);
         $('tbody').html(tbody);
+    },
+
+    /**
+     * Format date
+     */
+    formatDate: function(timestamp) {
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+            'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var date = new Date(timestamp);
+
+        return months[date.getMonth()] + '-' + date.getDate();
     }
 
 }

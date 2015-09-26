@@ -13,3 +13,7 @@ label {
 .results {
     margin-top: 50px;
 }
+
+table .date {
+    white-space: nowrap;
+}
