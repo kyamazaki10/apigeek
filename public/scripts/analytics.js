@@ -27,6 +27,9 @@ A.Analytics = {
         var dates = [];
         var values;
 
+        // alphabetize the array by proxy name
+        proxies = A.Analytics.alphabetize(proxies);
+
         // loop through each proxy
         for (var i=0; i<proxies.length; i++) {
             // display the proxy name
@@ -67,6 +70,23 @@ A.Analytics = {
 
         $('thead').html(thead);
         $('tbody').html(tbody);
+    },
+
+    /**
+     * Alphabetize the columns
+     */
+    alphabetize: function(array) {
+        var sortA;
+        var sortB;
+
+        array.sort(function(a, b) {
+            sortA = a.name;
+            sortB = b.name;
+
+            return (sortA < sortB) ? -1 : (sortA > sortB) ? 1 : 0;
+        });
+
+        return array;
     },
 
     /**
