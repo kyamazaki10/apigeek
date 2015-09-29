@@ -14,6 +14,14 @@ label {
     margin-top: 50px;
 }
 
+table {
+    text-align: center;
+}
+
 table .date {
     white-space: nowrap;
+}
+
+table .totals {
+    font-weight: bold;
 }

@@ -17,51 +17,89 @@ A.Analytics = {
     },
 
     /**
-     * Prettifying the transactions into a table
+     * Prettify the transactions into a table
      */
     prettifyTransactions: function(data) {
         var proxies = data.environments[0].dimensions;
         var thead = '<th></th>';
         var tbody = '';
-        var date = [];
+        var totals = [];
+        var dates = [];
         var values;
 
         // loop through each proxy
         for (var i=0; i<proxies.length; i++) {
-            // store the proxy name
+            // display the proxy name
             thead += '<th>' + proxies[i].name + '</th>';
 
             // the values are a single array of all the dates and the transaction
             // count (for that single proxy) for that specific date
             values = proxies[i].metrics[0].values;
 
+            // calculate the total transactions for each proxy
+            totals[i] = totals[i] || [];
+            totals[i] = A.Analytics.calculateTotals(values);
+
             // each date gets its own array for easy generation of html markup
             for (var j=0; j<values.length; j++) {
-                date[j] = date[j] || [];
+                dates[j] = dates[j] || [];
 
                 // push the proxy's transaction count into each date's array
-                date[j].push([values[j].value]);
+                dates[j].push(Math.round([values[j].value]));
             }
         }
 
-        // loop through the each date's array
-        for (var k=0; k<date.length; k++) {
+        // loop through each date's array backwards so the transaction counts will
+        // be displayed in chronological order
+        for (var k=dates.length-1; k>=0; k--) {
             tbody += '<tr>';
             tbody += '<td class="date">' + A.Analytics.formatDate(values[k].timestamp) + '</td>';
 
-            for (var l=0; l<date[k].length; l++) {
-                tbody += '<td>' + date[k][l] + '</td>';
+            for (var l=0; l<dates[k].length; l++) {
+                tbody += '<td>' + dates[k][l] + '</td>';
             }
 
             tbody += '</tr>';
         }
+
+        // display the totals for each proxy
+        tbody += A.Analytics.appendTotals(totals);
 
         $('thead').html(thead);
         $('tbody').html(tbody);
     },
 
     /**
-     * Format date
+     * Calculate the totals for each column
+     */
+    calculateTotals: function(values) {
+        var total = 0;
+
+        for (var i=0; i<values.length; i++) {
+            total = total + parseInt(values[i].value);
+        }
+
+        return total;
+    },
+
+    /**
+     * Append the totals for each column to the table
+     */
+    appendTotals: function(totals) {
+        var html = '<tr class="totals">';
+        html += '<td>TOTALS:</td>';
+
+        for (var i=0; i<totals.length; i++) {
+            html += '<td class="totals">' + totals[i] + '</td>';
+        }
+
+        html += '</tr>';
+
+        return html;
+    },
+
+    /**
+     * Format the date
      */
     formatDate: function(timestamp) {
         var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
