@@ -6,9 +6,12 @@ A.Analytics = {
      * Get total transactions for a single developer by API proxy
      */
     getTransactions: function(params) {
+        var from = params.fromMonth + '/' + params.fromDay + '/' + params.fromYear;
+        var to = params.toMonth + '/' + params.toDay + '/' + params.toYear;
+
         var data = {
             'select' : 'sum(message_count)',
-            'timeRange' : '09/01/2015 00:00~09/30/2015 23:59',
+            'timeRange' : from + ' 00:00~' + to + ' 23:59',
             'timeUnit' : 'day',
             'filter' : '(developer_email eq \'' + params.email + '\')'
         };

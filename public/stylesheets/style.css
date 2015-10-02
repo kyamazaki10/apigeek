@@ -2,12 +2,15 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-label {
-    margin-right: 10px;
+.form-group button,
+.form-group input,
+.form-group select,
+.form-group textarea {
+    margin: 5px 20px 5px 0;
 }
 
-.submit {
-    margin-left: 6px;
+label {
+    margin-right: 10px;
 }
 
 .results {

@@ -5,18 +5,17 @@ $(function() {
     $('.submit').click(function(e) {
         e.preventDefault();
 
-        var target = e.currentTarget;
-        var ns = $(target).parents('form').attr('name');
-        var data = $(target).siblings('.form-group');
+        var data = $('.form-group');
         var params = {};
 
         // create object of all parameters
-        for (var i = 0; i < data.length; i++) {
-            params[data.children('label').attr('for')] = data.children('input').val();
+        for (var i=0; i<data.length; i++) {
+            params[$(data[i]).children('label').attr('for')]
+                = $(data[i]).children('input').val() || $(data[i]).children('select').find(':selected').val();
         }
 
-        // call function with the above parameters
-        window['A'][ns][target.id](params);
+        // call namespaced function with the above parameters
+        window['A'][$('form').attr('name')][e.currentTarget.id](params);
     });
 
 });
