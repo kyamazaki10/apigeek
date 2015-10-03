@@ -9,6 +9,10 @@ body {
     margin: 5px 20px 5px 0;
 }
 
+.form-inline input.form-control {
+    width: 300px;
+}
+
 label {
     margin-right: 10px;
 }
