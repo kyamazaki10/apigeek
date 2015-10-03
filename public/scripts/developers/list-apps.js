@@ -7,7 +7,7 @@ A.Developers = {
      */
     listDeveloperApps: function(params) {
         var data = {
-            'expand' : 'true'
+            'expand' : params.expand
         }
 
         A.Utils.submitRequest(this.url + params.email + '/apps', data);

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/listapps', function(request, response) {
-    response.render('developers/listapps',
+    response.render('developers/list-apps',
         { title: 'List Developer Apps' }
     )
 });
