@@ -129,7 +129,7 @@ A.Analytics = {
             'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         var date = new Date(timestamp);
 
-        return months[date.getMonth()] + '-' + date.getDate();
+        return months[date.getUTCMonth()] + '-' + date.getUTCDate();
     }
 
 }

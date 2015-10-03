@@ -4,8 +4,8 @@ $(function() {
      * Select the from and to dates relative to the current date
      */
     var today = new Date();
-    var month = today.getMonth();
-    var day = today.getDay();
+    var month = today.getMonth() + 1;
+    var day = today.getDate();
     var year = today.getYear();
 
     $('select.fromMonth option[value=' + (month - 1) + ']').prop('selected', true);
