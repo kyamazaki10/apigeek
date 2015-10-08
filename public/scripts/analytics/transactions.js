@@ -24,14 +24,14 @@ A.Analytics = {
      */
     prettifyTransactions: function(data) {
         var proxies = data.environments[0].dimensions;
-        var thead = '';
-        var tbody = '';
+        var table = '';
         var totals = [];
         var dates = [];
         var values;
 
-        thead += '<tr>';
-        thead += '<th></th>';
+        table += '<table class="table table-condensed table-bordered table-hover analytics">';
+        table += '<thead><tr>';
+        table += '<th></th>';
 
         // alphabetize the array by proxy name
         proxies = A.Analytics.alphabetize(proxies);
@@ -39,7 +39,7 @@ A.Analytics = {
         // loop through each proxy
         for (var i=0; i<proxies.length; i++) {
             // display the proxy name in the table header
-            thead += '<th>' + proxies[i].name + '</th>';
+            table += '<th>' + proxies[i].name + '</th>';
 
             // the values are a single array of all the dates and the transaction
             // count (for that single proxy) for that specific date
@@ -58,26 +58,27 @@ A.Analytics = {
             }
         }
 
-        thead += '</tr>';
+        table += '</tr></thead>';
+        table += '<tbody>';
 
         // loop through each date's array backwards so the transaction counts will
         // be displayed in chronological order
         for (var k=dates.length-1; k>=0; k--) {
-            tbody += '<tr>';
-            tbody += '<td class="date">' + A.Analytics.formatDate(values[k].timestamp) + '</td>';
+            table += '<tr>';
+            table += '<td class="date">' + A.Analytics.formatDate(values[k].timestamp) + '</td>';
 
             for (var l=0; l<dates[k].length; l++) {
-                tbody += '<td>' + dates[k][l] + '</td>';
+                table += '<td>' + dates[k][l] + '</td>';
             }
 
-            tbody += '</tr>';
+            table += '</tr>';
         }
 
         // display the totals for each proxy
-        tbody += A.Analytics.appendTotals(totals);
+        table += A.Analytics.appendTotals(totals);
+        table += '</tbody></table>';
 
-        $('thead').html(thead);
-        $('tbody').html(tbody);
+        $('.results').after(table);
     },
 
     /**
