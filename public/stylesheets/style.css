@@ -21,8 +21,12 @@ label {
     margin-top: 50px;
 }
 
-table {
+table.analytics {
     text-align: center;
+}
+
+table .subheader {
+    font-weight: normal;
 }
 
 table .date {

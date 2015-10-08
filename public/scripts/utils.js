@@ -25,6 +25,17 @@ A.Utils = {
                 $('.result-json').html(JSON.stringify(data, null, 2));
             }
         });
+    },
+
+    /**
+     * Find and return the value of an object within an array based on its key
+     */
+    getKeyValue: function(array, key) {
+        var result = $.grep(array, function(e) {
+            return e.name === key;
+        });
+
+        return (result.length !== 0) ? result[0].value : '';
     }
 
 }

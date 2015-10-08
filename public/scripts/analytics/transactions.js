@@ -24,18 +24,21 @@ A.Analytics = {
      */
     prettifyTransactions: function(data) {
         var proxies = data.environments[0].dimensions;
-        var thead = '<th></th>';
+        var thead = '';
         var tbody = '';
         var totals = [];
         var dates = [];
         var values;
+
+        thead += '<tr>';
+        thead += '<th></th>';
 
         // alphabetize the array by proxy name
         proxies = A.Analytics.alphabetize(proxies);
 
         // loop through each proxy
         for (var i=0; i<proxies.length; i++) {
-            // display the proxy name
+            // display the proxy name in the table header
             thead += '<th>' + proxies[i].name + '</th>';
 
             // the values are a single array of all the dates and the transaction
@@ -54,6 +57,8 @@ A.Analytics = {
                 dates[j].push(Math.round([values[j].value]));
             }
         }
+
+        thead += '</tr>';
 
         // loop through each date's array backwards so the transaction counts will
         // be displayed in chronological order
