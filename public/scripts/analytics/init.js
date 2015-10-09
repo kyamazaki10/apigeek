@@ -16,4 +16,21 @@ $(function() {
     $('select.toDay option[value=' + day + ']').prop('selected', true);
     $('select.toYear option[value=' + year + ']').prop('selected', true);
 
+    /**
+     * Retrieve the developer's apps when the email input loses focus
+     */
+    var email = $('input.email');
+
+    email.blur(function() {
+        $('select.app').find('option:gt(0)').remove();
+
+        A.Developers.listDeveloperApps(
+            {
+                'email' : email.val(),
+                'expand' : 'false'
+            },
+            A.Analytics.listApps
+        );
+    });
+
 });

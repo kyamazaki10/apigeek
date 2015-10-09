@@ -1,8 +1,7 @@
 extends ../layout
 
 block append head
-    script(src='/scripts/analytics/date.js')
-    script(src='/scripts/analytics/transactions.js')
+    script(src='/scripts/analytics/init.js')
 
 block content
     .container
@@ -14,7 +13,11 @@ block content
             form(name='Analytics' class='form-inline')
                 .form-group
                     label(for='email') Email:
-                    input(type='text' class='form-control')
+                    input(type='text' class='form-control email')
+                .form-group
+                    label(for='app') App:
+                    select(class='form-control app')
+                        option(value='all') All Applications
                 .calendar
                     .form-group
                         label(for='fromMonth') Month:

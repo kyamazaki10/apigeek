@@ -5,12 +5,13 @@ A.Developers = {
     /**
      * List all of the developer's apps
      */
-    listDeveloperApps: function(params) {
+    listDeveloperApps: function(params, callback) {
+        var callback = callback ? callback : this.prettifyApps;
         var data = {
             'expand' : params.expand
         }
 
-        A.Utils.submitRequest(this.url + params.email + '/apps', data, this.prettifyApps);
+        A.Utils.submitRequest(this.url + params.email + '/apps', data, callback);
     },
 
     /**

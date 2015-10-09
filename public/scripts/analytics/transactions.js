@@ -9,11 +9,18 @@ A.Analytics = {
         var from = params.fromMonth + '/' + params.fromDay + '/' + params.fromYear;
         var to = params.toMonth + '/' + params.toDay + '/' + params.toYear;
 
+        var filter = '(developer_email eq \'' + params.email + '\')';
+        var app = params.app;
+
+        if (app !== 'all') {
+            filter += ' and (developer_app eq \'' + app + '\')';
+        }
+
         var data = {
             'select' : 'sum(message_count)',
             'timeRange' : from + ' 00:00~' + to + ' 23:59',
             'timeUnit' : 'day',
-            'filter' : '(developer_email eq \'' + params.email + '\')'
+            'filter' : filter
         };
 
         A.Utils.submitRequest(this.url, data, this.prettifyTransactions);
@@ -79,6 +86,15 @@ A.Analytics = {
         table += '</tbody></table>';
 
         $('.results').after(table);
+    },
+
+    /**
+     * List the apps in the Select menu
+     */
+    listApps: function(apps) {
+        for (var i=0; i<apps.length; i++) {
+            $('select.app').append('<option>' + apps[i] + '</option>');
+        }
     },
 
     /**
