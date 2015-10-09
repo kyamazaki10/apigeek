@@ -85,7 +85,7 @@ A.Analytics = {
         table += A.Analytics.appendTotals(totals);
         table += '</tbody></table>';
 
-        $('.results').after(table);
+        $('.results').html(table);
     },
 
     /**

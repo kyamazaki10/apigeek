@@ -35,7 +35,7 @@ A.Developers = {
 
             table += '</tbody></table>';
 
-            $('.results').after(table);
+            $('.results').html(table);
 
         // else if expand is set to true
         } else {
@@ -67,7 +67,7 @@ A.Developers = {
                 table += '</tbody></table>';
             }
 
-            $('.results').after(table);
+            $('.results').html(table);
         }
     }
 
