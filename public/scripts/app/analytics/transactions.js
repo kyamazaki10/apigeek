@@ -1,5 +1,4 @@
 define(['app/config', 'app/utils'], function(config, utils) {
-    var self = this;
 
     return {
 
