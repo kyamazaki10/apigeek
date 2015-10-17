@@ -1,5 +1,8 @@
 extends ../layout
 
+block append head
+    script(src='/scripts/vendor/require.js' data-main='/scripts/apps.js')
+
 block content
     .container
 
@@ -7,7 +10,7 @@ block content
             h1= title
 
         .content
-            form(name='Developers' class='form-inline')
+            form(class='form-inline')
                 .form-group
                     label(for='email') Email:
                     input(type='text' class='form-control')
@@ -16,7 +19,7 @@ block content
                     select(class='form-control expand')
                         option(value='true') true
                         option(value='false' selected) false
-                button(id='listDeveloperApps' class='btn btn-primary submit') Submit
+                button(class='btn btn-primary submit') Submit
 
             h4 Result
             .results

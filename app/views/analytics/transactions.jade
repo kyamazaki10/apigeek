@@ -1,7 +1,7 @@
 extends ../layout
 
 block append head
-    script(src='/scripts/analytics/init.js')
+    script(src='/scripts/vendor/require.js' data-main='/scripts/transactions.js')
 
 block content
     .container
@@ -10,7 +10,7 @@ block content
             h1= title
 
         .content
-            form(name='Analytics' class='form-inline')
+            form(class='form-inline')
                 .form-group
                     label(for='email') Email:
                     input(type='text' class='form-control email')
@@ -126,7 +126,7 @@ block content
                         label(for='toYear') Year:
                         select(class='form-control toYear')
                             option(value='2015') 2015
-                    button(id='getTransactions' class='btn btn-primary submit') Submit
+                    button(class='btn btn-primary submit') Submit
 
             h4 Result
             .results
