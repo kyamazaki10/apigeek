@@ -16,6 +16,13 @@ define(['app/config', 'app/utils'], function(config, utils) {
         },
 
         /**
+         * Get developer attributes
+         */
+        getDeveloper: function(params, callback) {
+            utils.submitRequest(this.url + params.email, null, this, callback);
+        },
+
+        /**
          * Show the developer apps in a table
          */
         showApps: function(data) {
@@ -49,7 +56,6 @@ define(['app/config', 'app/utils'], function(config, utils) {
                     table += '<span class="subheader">' + apps[i].name + '</span>';
                     table += '</th></tr></thead>';
 
-                    //creds = apps[i].credentials[0] || {};
                     creds = apps[i].credentials;
 
                     if (creds.length !== 0) {
