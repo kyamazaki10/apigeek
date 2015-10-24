@@ -26,7 +26,7 @@ define(['app/config', 'app/utils'], function(config, utils) {
                 'filter' : filter
             };
 
-            utils.submitRequest(this.url, data, this, callback);
+            utils.submitRequest(this.url, 'GET', data, this, callback);
         },
 
         /**

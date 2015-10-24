@@ -12,14 +12,14 @@ define(['app/config', 'app/utils'], function(config, utils) {
                 'expand' : params.expand
             }
 
-            utils.submitRequest(this.url + params.email + '/apps', data, this, callback);
+            utils.submitRequest(this.url + params.email + '/apps', 'GET', data, this, callback);
         },
 
         /**
          * Get developer attributes
          */
-        getDeveloper: function(params, callback) {
-            utils.submitRequest(this.url + params.email, null, this, callback);
+        getDeveloper: function(params) {
+            utils.submitRequest(this.url + params.email, 'GET');
         },
 
         /**

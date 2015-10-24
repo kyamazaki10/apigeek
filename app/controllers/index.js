@@ -3,6 +3,7 @@ var router = express.Router();
 
 router.use('/analytics', require('./analytics'));
 router.use('/developers', require('./developers'));
+router.use('/monetization', require('./monetization'));
 
 router.get('/', function(request, response) {
     response.render('index',
