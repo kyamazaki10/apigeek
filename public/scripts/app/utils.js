@@ -23,9 +23,9 @@ define(['app/config'], function(config) {
                     var contentType = jqxhr.getResponseHeader('Content-Type');
 
                     if (contentType === 'application/octet-stream') {
-                        $('.result-json').html(data);
+                        $('.result-raw').html(data);
                     } else {
-                        $('.result-json').html(JSON.stringify(data, null, 2));
+                        $('.result-raw').html(JSON.stringify(data, null, 2));
                     }
 
                     if (callback) {

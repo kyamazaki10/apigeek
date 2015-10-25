@@ -2,6 +2,10 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+h4.result {
+    margin-top: 30px;
+}
+
 .form-group button,
 .form-group input,
 .form-group select,
@@ -15,10 +19,6 @@ body {
 
 label {
     margin-right: 10px;
-}
-
-.results {
-    margin-top: 50px;
 }
 
 table.analytics {
