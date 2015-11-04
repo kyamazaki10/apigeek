@@ -1,7 +1,14 @@
-require(['app/monetization/reports', 'app/utils'], function(reports, utils) {
+require(['app/monetization/monetization', 'app/utils'], function(monetization, utils) {
 
     $('.submit').on('click', function(e) {
-        reports.getRevenueReport(utils.getParams(e));
+        switch(e.target.id) {
+            case 'get-developer-accepted-rate-plans':
+                monetization.getDeveloperAcceptedRatePlans(utils.getParams(e), monetization.showDeveloperAcceptedRatePlans);
+                break;
+            case 'get-revenue-report':
+                monetization.getRevenueReport(utils.getParams(e));
+                break;
+        }
     });
 
     // Auto-populate the from and to dates relative to the current date

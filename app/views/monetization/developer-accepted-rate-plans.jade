@@ -1,0 +1,23 @@
+extends ../layout
+
+block append head
+    script(src='/scripts/vendor/require.js' data-main='/scripts/monetization.js')
+
+block content
+    .container
+
+        .page-header
+            h1= title
+
+        .content
+            form(class='form-inline')
+                .form-group
+                    label(for='email') Email:
+                    input(type='text' class='form-control')
+                button(id='get-developer-accepted-rate-plans' class='btn btn-primary submit') Submit
+
+            h4.result Result
+            .results
+
+            pre
+                code(class='result-raw')
