@@ -39,8 +39,6 @@ define(['app/config'], function(config) {
          * Returns an object of all input and select values
          */
         getParams: function(e) {
-            e.preventDefault();
-
             var data = $('.form-group');
             var params = {};
 

@@ -12,7 +12,7 @@ define(['app/config', 'app/utils'], function(config, utils) {
         },
 
         /**
-         * Get the Revenue Report
+         * Get the revenue report
          */
         getRevenueReport: function(params) {
             var data = {
@@ -46,6 +46,13 @@ define(['app/config', 'app/utils'], function(config, utils) {
         },
 
         /**
+         * List all email notification templates
+         */
+        listEmailNotificationTemplates: function(callback) {
+            utils.submitRequest(this.url + '/notification-email-templates', 'GET', null, this, callback);
+        },
+
+        /**
          * Show the developer's accepted rate plans in a table
          */
         showDeveloperAcceptedRatePlans: function(data) {
@@ -69,6 +76,30 @@ define(['app/config', 'app/utils'], function(config, utils) {
 
                 $('.results').html(table);
             }
+        },
+
+        /**
+         * Show all email notification templates in a table
+         */
+        showEmailNotificationTemplates: function(data) {
+            var templates = data.emailTemplates;
+            var table = '';
+
+            for (var i=0; i<templates.length; i++) {
+                var template = templates[i];
+
+                table += '<table class="table table-condensed table-bordered table-hover">';
+                table += '<thead><tr><th>' + template.name + '</th></tr></thead>';
+                table += '<tbody>';
+                table += '<tr><td>createdDate: ' + template.createdDate + '</td></tr>';
+                table += '<tr><td>updatedDate: ' + template.updatedDate + '</td></tr>';
+                table += '<tr><td>id: ' + template.id + '</td></tr>';
+                table += '<tr><td>subject: ' + template.subject + '</td></tr>';
+                table += '<tr><td>body: ' + template.htmlImage + '</td></tr>';
+                table += '</tbody></table>';
+            }
+
+            $('.results').html(table);
         }
 
     }

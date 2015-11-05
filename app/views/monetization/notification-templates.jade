@@ -1,0 +1,23 @@
+extends ../layout
+
+block append head
+    script(src='/scripts/vendor/require.js' data-main='/scripts/monetization.js')
+
+block content
+    .container
+
+        .page-header
+            h1= title
+
+        .content
+            form(class='form-inline')
+                .form-group
+                    label(for='organization') Organization:
+                    input(type='text' class='form-control organization' disabled)
+                button(id='list-email-notification-templates' class='btn btn-primary submit') Submit
+
+            h4.result Result
+            .results
+
+            pre
+                code(class='result-raw')

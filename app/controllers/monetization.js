@@ -13,4 +13,10 @@ router.get('/get-revenue-report', function(request, response) {
     )
 });
 
+router.get('/list-email-notification-templates', function(request, response) {
+    response.render('monetization/notification-templates',
+        { title: 'List Email Notification Templates' }
+    )
+});
+
 module.exports = router;
