@@ -21,7 +21,8 @@ label {
     margin-right: 10px;
 }
 
-table.analytics {
+table.analytics,
+table.analytics th {
     text-align: center;
 }
 
