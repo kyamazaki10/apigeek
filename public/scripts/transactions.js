@@ -1,6 +1,12 @@
-require(['app/developers/apps', 'app/analytics/transactions', 'app/utils'], function(apps, trx, utils) {
+require([
+    'app/developers/list-apps',
+    'app/analytics/transactions',
+    'app/utils'
+], function(apps, trx, utils) {
 
     $('.submit').on('click', function(e) {
+        e.preventDefault();
+
         trx.getTransactions(utils.getParams(e), trx.showTransactions);
     });
 

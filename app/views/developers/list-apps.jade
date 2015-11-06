@@ -1,7 +1,7 @@
 extends ../layout
 
 block append head
-    script(src='/scripts/vendor/require.js' data-main='/scripts/apps.js')
+    script(src='/scripts/vendor/require.js' data-main='/scripts/developers.js')
 
 block content
     .container
@@ -14,7 +14,12 @@ block content
                 .form-group
                     label(for='email') Email:
                     input(type='text' class='form-control')
-                button(id='get-developer' class='btn btn-primary submit') Submit
+                .form-group
+                    label(for='expand') Expand:
+                    select(class='form-control expand')
+                        option(value='true' selected) true
+                        option(value='false') false
+                button(id='list-apps' class='btn btn-primary submit') Submit
 
             h4.result Result
             .results

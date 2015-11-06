@@ -14,7 +14,7 @@ router.get('/get-revenue-report', function(request, response) {
 });
 
 router.get('/list-email-notification-templates', function(request, response) {
-    response.render('monetization/notification-templates',
+    response.render('monetization/email-notification-templates',
         { title: 'List Email Notification Templates' }
     )
 });

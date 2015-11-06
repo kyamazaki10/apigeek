@@ -1,17 +1,25 @@
-require(['app/monetization/monetization', 'app/utils', 'app/config'], function(monetization, utils, config) {
+require([
+    'app/monetization/developer-accepted-rate-plans',
+    'app/monetization/email-notification-templates',
+    'app/monetization/revenue-report',
+    'app/utils',
+    'app/config'
+], function(rateplans, templates, reports, utils, config) {
 
     $('.submit').on('click', function(e) {
         e.preventDefault();
 
         switch(e.target.id) {
             case 'get-developer-accepted-rate-plans':
-                monetization.getDeveloperAcceptedRatePlans(utils.getParams(e), monetization.showDeveloperAcceptedRatePlans);
+                rateplans.getDeveloperAcceptedRatePlans(utils.getParams(e), rateplans.showDeveloperAcceptedRatePlans);
                 break;
+
             case 'get-revenue-report':
-                monetization.getRevenueReport(utils.getParams(e));
+                reports.getRevenueReport(utils.getParams(e));
                 break;
+
             case 'list-email-notification-templates':
-                monetization.listEmailNotificationTemplates(monetization.showEmailNotificationTemplates);
+                templates.listEmailNotificationTemplates(templates.showEmailNotificationTemplates);
         }
     });
 

@@ -16,13 +16,6 @@ define(['app/config', 'app/utils'], function(config, utils) {
         },
 
         /**
-         * Get developer attributes
-         */
-        getDeveloper: function(params) {
-            utils.submitRequest(this.url + params.email, 'GET');
-        },
-
-        /**
          * Show the developer apps in a table
          */
         showApps: function(data) {
