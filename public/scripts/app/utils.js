@@ -67,17 +67,23 @@ define(['app/config'], function(config) {
          */
         populateCalendar: function() {
             var today = new Date();
-            var month = today.getMonth() + 1;
+            var month = today.getMonth();
             var day = today.getDate();
-            var year = today.getYear();
+            var year = today.getFullYear();
 
-            $('select.fromMonth option[value=' + (month - 1) + ']').prop('selected', true);
-            $('select.fromDay option[value=' + day + ']').prop('selected', true);
-            $('select.fromYear option[value=' + year + ']').prop('selected', true);
-
-            $('select.toMonth option[value=' + month + ']').prop('selected', true);
+            $('select.toMonth option[value=' + (month + 1) + ']').prop('selected', true);
             $('select.toDay option[value=' + day + ']').prop('selected', true);
             $('select.toYear option[value=' + year + ']').prop('selected', true);
+
+            // if January, adjust the displayed fromMonth and fromYear to be December of the previous year
+            if (month === 0) {
+                month = 12;
+                year = year - 1;
+            }
+
+            $('select.fromMonth option[value=' + month + ']').prop('selected', true);
+            $('select.fromDay option[value=' + day + ']').prop('selected', true);
+            $('select.fromYear option[value=' + year + ']').prop('selected', true);
         }
 
     }
