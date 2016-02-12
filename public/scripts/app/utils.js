@@ -3,6 +3,27 @@ define(['app/config'], function(config) {
     return {
 
         /**
+         * Get Base URL for the Apigee request type
+         */
+        getUrl: function(type) {
+            var url = 'https://api.enterprise.apigee.com/v1';
+
+            switch (type) {
+                case 'analytics' :
+                    url += '/o/' + config.org + '/environments/' + config.env + '/stats/apis';
+                    break;
+                case 'developers' :
+                    url += '/o/' + config.org + '/developers/';
+                    break;
+                case 'monetization':
+                    url += '/mint/organizations/' + config.org;
+                    break;
+            }
+
+            return url;
+        },
+
+        /**
          * Submit AJAX request
          */
         submitRequest: function(url, type, data, context, callback) {
