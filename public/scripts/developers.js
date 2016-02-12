@@ -1,5 +1,5 @@
 require([
-    'app/developers/get-developer',
+    'app/developers/developer',
     'app/developers/list-apps',
     'app/utils'
 ], function(developer, apps, utils) {
