@@ -37,3 +37,8 @@ table .date {
 table .totals {
     font-weight: bold;
 }
+
+.error {
+    color: #CC0000;
+    margin-bottom: 30px;
+}

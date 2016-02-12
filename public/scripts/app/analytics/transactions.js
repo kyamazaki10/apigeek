@@ -34,61 +34,68 @@ define(['app/config', 'app/utils'], function(config, utils) {
          */
         showTransactions: function(data, self) {
             var proxies = data.environments[0].dimensions;
-            var table = '';
-            var totals = [];
-            var dates = [];
-            var values;
 
-            table += '<table class="table table-condensed table-bordered table-hover analytics">';
-            table += '<thead><tr>';
-            table += '<th></th>';
+            if (proxies) {
+                var table = '';
+                var totals = [];
+                var dates = [];
+                var values;
 
-            // alphabetize the array by proxy name
-            proxies = self.alphabetize(proxies);
+                table += '<table class="table table-condensed table-bordered table-hover analytics">';
+                table += '<thead><tr>';
+                table += '<th></th>';
 
-            // loop through each proxy
-            for (var i=0; i<proxies.length; i++) {
-                // display the proxy name in the table header
-                table += '<th>' + proxies[i].name + '</th>';
+                // alphabetize the array by proxy name
+                proxies = self.alphabetize(proxies);
 
-                // the values are a single array of all the dates and the transaction
-                // count (for that single proxy) for that specific date
-                values = proxies[i].metrics[0].values;
+                // loop through each proxy
+                for (var i=0; i<proxies.length; i++) {
+                    // display the proxy name in the table header
+                    table += '<th>' + proxies[i].name + '</th>';
 
-                // calculate the total transactions for each proxy
-                totals[i] = totals[i] || [];
-                totals[i] = self.calculateTotals(values);
+                    // the values are a single array of all the dates and the transaction
+                    // count (for that single proxy) for that specific date
+                    values = proxies[i].metrics[0].values;
 
-                // each date gets its own array for easy generation of html markup
-                for (var j=0; j<values.length; j++) {
-                    dates[j] = dates[j] || [];
+                    // calculate the total transactions for each proxy
+                    totals[i] = totals[i] || [];
+                    totals[i] = self.calculateTotals(values);
 
-                    // push the proxy's transaction count into each date's array
-                    dates[j].push(Math.round([values[j].value]));
-                }
-            }
+                    // each date gets its own array for easy generation of html markup
+                    for (var j=0; j<values.length; j++) {
+                        dates[j] = dates[j] || [];
 
-            table += '</tr></thead>';
-            table += '<tbody>';
-
-            // loop through each date's array backwards so the transaction counts will
-            // be displayed in chronological order
-            for (var k=dates.length-1; k>=0; k--) {
-                table += '<tr>';
-                table += '<td class="date">' + self.formatDate(values[k].timestamp) + '</td>';
-
-                for (var l=0; l<dates[k].length; l++) {
-                    table += '<td>' + dates[k][l] + '</td>';
+                        // push the proxy's transaction count into each date's array
+                        dates[j].push(Math.round([values[j].value]));
+                    }
                 }
 
-                table += '</tr>';
+                table += '</tr></thead>';
+                table += '<tbody>';
+
+                // loop through each date's array backwards so the transaction counts will
+                // be displayed in chronological order
+                for (var k=dates.length-1; k>=0; k--) {
+                    table += '<tr>';
+                    table += '<td class="date">' + self.formatDate(values[k].timestamp) + '</td>';
+
+                    for (var l=0; l<dates[k].length; l++) {
+                        table += '<td>' + dates[k][l] + '</td>';
+                    }
+
+                    table += '</tr>';
+                }
+
+                // display the totals for each proxy
+                table += self.appendTotals(totals);
+                table += '</tbody></table>';
+
+                $('.results').html(table);
+
+            // display error message
+            } else {
+                $('.results').html('<p class="error">No transactions to show.</p>');
             }
-
-            // display the totals for each proxy
-            table += self.appendTotals(totals);
-            table += '</tbody></table>';
-
-            $('.results').html(table);
         },
 
         /**
