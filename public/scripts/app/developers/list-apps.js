@@ -2,8 +2,6 @@ define(['app/config', 'app/utils'], function(config, utils) {
 
     return {
 
-        url: 'https://api.enterprise.apigee.com/v1/o/' + config.org + '/developers/',
-
         /**
          * Get all of the developer's apps
          */
@@ -12,7 +10,7 @@ define(['app/config', 'app/utils'], function(config, utils) {
                 'expand' : params.expand
             }
 
-            utils.submitRequest(this.url + params.email + '/apps', 'GET', data, this, callback);
+            utils.submitRequest(utils.getUrl('developers') + params.email + '/apps', 'GET', data, this, callback);
         },
 
         /**

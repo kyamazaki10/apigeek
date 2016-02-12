@@ -2,8 +2,6 @@ define(['app/config', 'app/utils'], function(config, utils) {
 
     return {
 
-        url: 'https://api.enterprise.apigee.com/v1/mint/organizations/' + config.org,
-
         /**
          * Get the revenue report
          */
@@ -35,7 +33,7 @@ define(['app/config', 'app/utils'], function(config, utils) {
                 ]
             };
 
-            utils.submitRequest(this.url + '/revenue-reports', 'POST', data);
+            utils.submitRequest(utils.getUrl('monetization') + '/revenue-reports', 'POST', data);
         }
 
     }

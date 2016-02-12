@@ -2,8 +2,6 @@ define(['app/config', 'app/utils'], function(config, utils) {
 
     return {
 
-        url: 'https://api.enterprise.apigee.com/v1/o/' + config.org + '/environments/' + config.env + '/stats/apis',
-
         /**
          * Get total transactions for a single developer by API proxy
          */
@@ -26,7 +24,7 @@ define(['app/config', 'app/utils'], function(config, utils) {
                 'filter' : filter
             };
 
-            utils.submitRequest(this.url, 'GET', data, this, callback);
+            utils.submitRequest(utils.getUrl('analytics'), 'GET', data, this, callback);
         },
 
         /**

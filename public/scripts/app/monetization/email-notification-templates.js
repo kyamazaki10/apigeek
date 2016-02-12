@@ -2,13 +2,11 @@ define(['app/config', 'app/utils'], function(config, utils) {
 
     return {
 
-        url: 'https://api.enterprise.apigee.com/v1/mint/organizations/' + config.org,
-
         /**
          * List all email notification templates
          */
         listEmailNotificationTemplates: function(callback) {
-            utils.submitRequest(this.url + '/notification-email-templates', 'GET', null, this, callback);
+            utils.submitRequest(utils.getUrl('monetization') + '/notification-email-templates', 'GET', null, this, callback);
         },
 
         /**

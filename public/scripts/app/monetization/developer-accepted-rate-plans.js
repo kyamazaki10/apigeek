@@ -2,13 +2,11 @@ define(['app/config', 'app/utils'], function(config, utils) {
 
     return {
 
-        url: 'https://api.enterprise.apigee.com/v1/mint/organizations/' + config.org,
-
         /**
          * Get all the developer's accepted rate plans
          */
         getDeveloperAcceptedRatePlans: function(params, callback) {
-            utils.submitRequest(this.url + '/developers/' + params.email + '/developer-accepted-rateplans', 'GET', null, this, callback);
+            utils.submitRequest(utils.getUrl('monetization') + '/developers/' + params.email + '/developer-accepted-rateplans', 'GET', null, this, callback);
         },
 
         /**
