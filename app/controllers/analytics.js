@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/transactions', function(request, response) {
     response.render('analytics/transactions',
-        { title: 'Total Transactions' }
+        { title: 'API Transactions (by Developer)' }
     )
 });
 

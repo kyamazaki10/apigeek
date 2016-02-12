@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/get-developer', function(request, response) {
-    response.render('developers/get-developer',
+router.get('/developer', function(request, response) {
+    response.render('developers/developer',
         { title: 'Get Developer' }
     )
 });

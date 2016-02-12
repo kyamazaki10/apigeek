@@ -10,11 +10,11 @@ require([
         e.preventDefault();
 
         switch(e.target.id) {
-            case 'get-developer-accepted-rate-plans':
+            case 'developer-accepted-rate-plans':
                 rateplans.getDeveloperAcceptedRatePlans(utils.getParams(e), rateplans.showDeveloperAcceptedRatePlans);
                 break;
 
-            case 'get-revenue-report':
+            case 'revenue-report':
                 reports.getRevenueReport(utils.getParams(e));
                 break;
 

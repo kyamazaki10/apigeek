@@ -8,7 +8,7 @@ require([
         e.preventDefault();
 
         switch(e.target.id) {
-            case 'get-developer':
+            case 'developer':
                 developer.getDeveloper(utils.getParams(e));
                 break;
 
