@@ -8,6 +8,6 @@ app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
 app.use(require('./app/controllers'));
 
-app.listen('8888', function() {
-   console.log('listening on localhost:8888'); 
+app.listen('4444', function() {
+   console.log('listening on localhost:4444');
 });
