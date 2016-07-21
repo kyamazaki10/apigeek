@@ -3,6 +3,13 @@ define(['app/config', 'app/utils'], function(config, utils) {
     return {
 
         /**
+         * Get developer attributes
+         */
+        getDeveloper: function(params) {
+            utils.submitRequest(utils.getUrl('developers') + params.email, 'GET');
+        },
+
+        /**
          * Get all of the developer's apps
          */
         getApps: function(params, callback) {

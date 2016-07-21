@@ -1,19 +1,18 @@
 require([
-    'app/developers/developer',
-    'app/developers/list-apps',
+    'app/developers/developers',
     'app/utils'
-], function(developer, apps, utils) {
+], function(developers, utils) {
 
     $('.submit').on('click', function(e) {
         e.preventDefault();
 
         switch(e.target.id) {
             case 'developer':
-                developer.getDeveloper(utils.getParams(e));
+                developers.getDeveloper(utils.getParams(e));
                 break;
 
             case 'list-apps':
-                apps.getApps(utils.getParams(e), apps.showApps);
+                developers.getApps(utils.getParams(e), developers.showApps);
                 break;
         }
     });

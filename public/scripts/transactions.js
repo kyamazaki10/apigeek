@@ -1,8 +1,8 @@
 require([
-    'app/developers/list-apps',
+    'app/developers/developers',
     'app/analytics/transactions',
     'app/utils'
-], function(apps, trx, utils) {
+], function(developers, trx, utils) {
 
     $('.submit').on('click', function(e) {
         e.preventDefault();
@@ -27,7 +27,7 @@ require([
 
         $('select.app').find('option:gt(0)').remove();
 
-        apps.getApps(params, trx.listApps);
+        developers.getApps(params, trx.listApps);
     });
 
 });

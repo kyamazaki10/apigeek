@@ -1,25 +1,23 @@
 require([
-    'app/monetization/developer-accepted-rate-plans',
-    'app/monetization/email-notification-templates',
-    'app/monetization/revenue-report',
+    'app/monetization/monetization',
     'app/utils',
     'app/config'
-], function(rateplans, templates, reports, utils, config) {
+], function(monetization, utils, config) {
 
     $('.submit').on('click', function(e) {
         e.preventDefault();
 
         switch(e.target.id) {
             case 'developer-accepted-rate-plans':
-                rateplans.getDeveloperAcceptedRatePlans(utils.getParams(e), rateplans.showDeveloperAcceptedRatePlans);
+                monetization.getDeveloperAcceptedRatePlans(utils.getParams(e), monetization.showDeveloperAcceptedRatePlans);
                 break;
 
             case 'revenue-report':
-                reports.getRevenueReport(utils.getParams(e));
+                monetization.getRevenueReport(utils.getParams(e));
                 break;
 
             case 'list-email-notification-templates':
-                templates.listEmailNotificationTemplates(templates.showEmailNotificationTemplates);
+                monetization.getEmailNotificationTemplates(monetization.showEmailNotificationTemplates);
         }
     });
 
